@@ -1,0 +1,20 @@
+name: "Sugestão / Feature request"
+description: "Descrever um problema e uma melhoria / Describe a problem and an improvement"
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: "Problema / Problem"
+      description: "Qual situação precisa melhorar? / What situation needs improvement?"
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: "Resultado proposto / Proposed outcome"
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: "Alternativas e contexto / Alternatives and context"

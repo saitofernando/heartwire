@@ -1,0 +1,18 @@
+* text=auto eol=lf
+*.md text eol=lf
+*.rs text eol=lf
+*.json text eol=lf
+*.mjs text eol=lf
+*.ts text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.toml text eol=lf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+*.png binary
+*.ico binary
+*.icns binary
+*.bmp binary
+# Original license documents retain their original whitespace.
+licenses/** -whitespace

@@ -1,0 +1,7 @@
+/target/
+/node_modules/
+/.local-data/
+/.test-data/
+/artifacts/
+*.log
+*.pem

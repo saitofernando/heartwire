@@ -1,0 +1,37 @@
+name: "Problema / Bug report"
+description: "Relatar um erro reproduzível / Report a reproducible issue"
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "PT-BR ou English. Não envie chaves privadas nem dados pessoais. / Never include private keys or personal data."
+  - type: input
+    id: version
+    attributes:
+      label: "Versão do app / App version"
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: "Ambiente / Environment"
+      description: "Windows, iOS/navegador, modo e dispositivo de áudio / Windows, iOS/browser, mode and audio device"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Passos para reproduzir / Reproduction steps"
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: "Esperado e observado / Expected and actual behavior"
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: "Logs e imagem, se necessários / Logs and screenshot, if needed"
+      description: "Remova IPs identificáveis e informações pessoais. Nunca anexe bridge-key.pem. / Redact identifying data. Never attach bridge-key.pem."

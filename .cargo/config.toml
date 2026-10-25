@@ -1,0 +1,7 @@
+[alias]
+xtask = "run --quiet --package xtask --"
+
+[env]
+# The Opus source bundled by audiopus_sys 0.2.2 declares an older CMake policy
+# version. CMake 4 uses this documented override for dependency build trees.
+CMAKE_POLICY_VERSION_MINIMUM = "3.5"

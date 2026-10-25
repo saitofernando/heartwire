@@ -1,0 +1,19 @@
+[workspace]
+members = ["crates/bridge-core", "crates/heartwire", "xtask"]
+default-members = ["crates/bridge-core"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+license = "MIT"
+authors = ["saitofernando <fernandosaito@hotmail.com.br>"]
+repository = "https://github.com/saitofernando/heartwire"
+homepage = "https://github.com/saitofernando/heartwire"
+edition = "2024"
+rust-version = "1.90"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = "debuginfo"

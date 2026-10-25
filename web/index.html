@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#171b18">
+  <meta name="description" content="HeartWire: áudio local, baixa latência. Windows e iPhone na mesma rede.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="HeartWire">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="/icons/heartwire.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/media-session.js" defer></script>
+  <script src="/app.js" defer></script>
+  <title>HeartWire</title>
+</head>
+<body>
+<main>
+  <header class="brand">
+    <img src="/icons/heartwire.svg" width="38" height="38" alt="">
+    <div><h1>HeartWire</h1><p data-i18n="Áudio local, baixa latência">Áudio local, baixa latência</p></div>
+  </header>
+  <nav class="tabs" role="tablist" aria-label="Seções">
+    <button id="mobile-tab-connection" role="tab" aria-selected="true" aria-controls="mobile-connection" data-i18n="Conexão">Conexão</button>
+    <button id="mobile-tab-settings" role="tab" aria-selected="false" aria-controls="settings" tabindex="-1" data-i18n="Ajustes">Ajustes</button>
+    <button id="mobile-tab-help" role="tab" aria-selected="false" aria-controls="help" tabindex="-1" data-i18n="Ajuda">Ajuda</button>
+  </nav>
+  <div class="error" id="error" role="alert" hidden></div>
+  <section id="mobile-connection" role="tabpanel" aria-labelledby="mobile-tab-connection">
+    <h2 id="headline">Áudio do PC</h2>
+    <div class="modes" role="group" aria-label="Modo de áudio">
+      <button class="mode" id="listen" aria-pressed="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="12" width="5" height="9" rx="2"/><rect x="16" y="12" width="5" height="9" rx="2"/></svg><span><span data-i18n="Fone">Fone</span><small>PC → iPhone</small></span></button>
+      <button class="mode" id="mic" aria-pressed="false"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3m-4 0h8"/></svg><span><span data-i18n="Microfone">Microfone</span><small>iPhone → PC</small></span></button>
+    </div>
+    <section class="connection" id="connection" aria-labelledby="connection-title">
+      <div class="state-label" data-i18n="Conexão">Conexão</div>
+      <h2 id="connection-title" aria-live="polite" aria-atomic="true">Desconectado</h2>
+      <p id="status" role="status">Toque em Conectar para ouvir o PC.</p>
+      <button id="connect" class="connect-button" disabled><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="m8 4 12 8-12 8z"/></svg><span>Conectar</span></button>
+      <button id="unblock-audio" class="unlock-button" data-i18n="Liberar som no Safari" hidden>Liberar som no Safari</button>
+      <p id="stats"></p>
+    </section>
+    <p class="screen-note" data-i18n="Com a tela bloqueada, o iOS pode interromper o áudio.">Com a tela bloqueada, o iOS pode interromper o áudio.</p>
+    <aside id="install-banner" class="install-notice" aria-labelledby="install-banner-title" hidden>
+      <div><strong id="install-banner-title">Adicionar à Tela de Início</strong><p id="install-banner-note">Abra o HeartWire pelo ícone, sem as barras do Safari.</p></div>
+      <button id="show-install-guide" type="button">Como instalar</button>
+    </aside>
+  </section>
+  <section id="settings" role="tabpanel" aria-labelledby="mobile-tab-settings" hidden>
+    <h2 data-i18n="Ajustes">Ajustes</h2>
+    <label class="setting-row" for="language-select"><span data-i18n="Idioma">Idioma</span>
+      <select id="language-select"><option value="pt-BR">Português (Brasil)</option><option value="en">English</option></select>
+    </label>
+    <section class="setting-card" aria-labelledby="install-title">
+      <h3 id="install-title" tabindex="-1" data-i18n="Tela de Início">Tela de Início</h3>
+      <p id="install-note" data-i18n="No Safari, toque em Compartilhar e Adicionar à Tela de Início.">No Safari, toque em Compartilhar e Adicionar à Tela de Início.</p>
+      <p id="install-state" class="install-state" role="status" aria-live="polite" hidden></p>
+      <button id="install" class="secondary-button" data-i18n="Instalar HeartWire" hidden>Instalar HeartWire</button>
+      <div class="webclip-install">
+        <button id="show-install-options" class="text-button" type="button" data-i18n="Reinstalar ou corrigir o ícone" hidden>Reinstalar ou corrigir o ícone</button>
+        <p id="webclip-disclaimer" data-i18n="Baixa um perfil com o ícone. Você conclui a instalação nos Ajustes do iPhone.">Baixa um perfil com o ícone. Você conclui a instalação nos Ajustes do iPhone.</p>
+        <a id="install-webclip" class="secondary-button" href="/install/heartwire.mobileconfig?lang=pt-BR" type="application/x-apple-aspen-config" data-i18n="Instalar com ícone">Instalar com ícone</a>
+        <details id="webclip-instructions">
+          <summary data-i18n="Como instalar">Como instalar</summary>
+          <ol class="install-steps">
+            <li data-i18n="No Safari, toque em Permitir para baixar o perfil.">No Safari, toque em Permitir para baixar o perfil.</li>
+            <li data-i18n="Logo depois, abra Ajustes → Perfil Baixado → Instalar.">Logo depois, abra Ajustes → Perfil Baixado → Instalar.</li>
+            <li data-i18n="Volte à Tela de Início e abra o novo ícone HeartWire para confirmar.">Volte à Tela de Início e abra o novo ícone HeartWire para confirmar.</li>
+          </ol>
+          <p class="muted" data-i18n="O perfil aparece em Geral → VPN e Gerenciamento de Dispositivo. Contém apenas o atalho e o ícone; não configura VPN, certificados ou gerenciamento remoto.">O perfil aparece em Geral → VPN e Gerenciamento de Dispositivo. Contém apenas o atalho e o ícone; não configura VPN, certificados ou gerenciamento remoto.</p>
+          <p class="muted" data-i18n="O iPhone pode mostrar que o perfil não é assinado. Instale em até 8 minutos após baixar; se ele sumir, baixe novamente.">O iPhone pode mostrar que o perfil não é assinado. Instale em até 8 minutos após baixar; se ele sumir, baixe novamente.</p>
+          <p id="install-confirmation-note" class="muted" data-i18n="A confirmação aparece ao abrir pelo ícone. O Safari não consegue consultar os perfis instalados.">A confirmação aparece ao abrir pelo ícone. O Safari não consegue consultar os perfis instalados.</p>
+          <p class="muted" data-i18n="Remova o atalho antigo só depois que o novo funcionar.">Remova o atalho antigo só depois que o novo funcionar.</p>
+        </details>
+      </div>
+      <p class="muted" id="install-detail" data-i18n="O PC precisa estar ligado e com o HeartWire iniciado.">O PC precisa estar ligado e com o HeartWire iniciado.</p>
+    </section>
+    <div class="about-row"><span>HeartWire</span><span data-i18n="Código aberto · MIT">Código aberto · MIT</span></div>
+  </section>
+  <section id="help" role="tabpanel" aria-labelledby="mobile-tab-help" hidden><h2 data-i18n="Ajuda">Ajuda</h2><div id="help-content"></div></section>
+  <audio id="player" autoplay playsinline></audio>
+  <noscript><p class="error">Ative JavaScript para conectar. Enable JavaScript to connect.</p></noscript>
+</main>
+</body>
+</html>

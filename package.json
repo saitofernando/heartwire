@@ -1,0 +1,32 @@
+{
+  "name": "heartwire",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "docs:check": "node scripts/check-docs.mjs",
+    "version:check": "node scripts/version.mjs check",
+    "version:set": "node scripts/version.mjs set",
+    "licenses:generate": "node scripts/third-party-notices.mjs",
+    "licenses:check": "node scripts/third-party-notices.mjs --check",
+    "release:check": "npm run version:check && npm run docs:check && npm run licenses:check",
+    "test:ui": "node scripts/ui-smoke.mjs && npm run test:webclip",
+    "test:pwa": "node --test web/tests/*.test.mjs",
+    "test:webclip": "node web/tests/webclip-ui.smoke.mjs"
+  },
+  "description": "Local audio between Windows and your phone with low latency",
+  "author": {
+    "name": "saitofernando",
+    "email": "fernandosaito@hotmail.com.br",
+    "url": "https://github.com/saitofernando"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saitofernando/heartwire.git"
+  },
+  "homepage": "https://github.com/saitofernando/heartwire",
+  "bugs": {
+    "url": "https://github.com/saitofernando/heartwire/issues"
+  }
+}

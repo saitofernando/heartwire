@@ -1,0 +1,37 @@
+[package]
+name = "heartwire"
+version.workspace = true
+description = "Native Windows tray app that streams audio to the iPhone over the local network"
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme = "../../README.md"
+
+[dependencies]
+bridge-core = { path = "../bridge-core" }
+eframe = { version = "0.37", default-features = false, features = ["accesskit", "clipboard", "glow"] }
+image = { version = "0.25", default-features = false, features = ["png"] }
+qrcode = { version = "0.14", default-features = false }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["rt-multi-thread", "sync", "time"] }
+tracing = "0.1"
+tracing-appender = "0.2"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tray-icon = "0.26"
+url = "2"
+# The same window eframe creates; used to anchor the panel to the tray.
+winit = { version = "0.30", default-features = false, features = ["rwh_06"] }
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.62", features = ["Win32_Foundation", "Win32_Graphics_Dwm", "Win32_Graphics_Gdi", "Win32_Security", "Win32_System_Threading", "Win32_UI_Shell", "Win32_UI_WindowsAndMessaging"] }
+windows-registry = "0.100"
+
+[dev-dependencies]
+rqrr = "0.10"
+
+[build-dependencies]
+winresource = "0.1"

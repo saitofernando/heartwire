@@ -1,0 +1,40 @@
+name: HeartWire — Verificações / Checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: dtolnay/rust-toolchain@1.97.1
+        with:
+          components: rustfmt, clippy
+      - name: Dependências / Dependencies
+        run: |
+          npm ci
+          cargo fetch --locked --target x86_64-pc-windows-msvc
+          cmake --version
+      - name: Documentação, versões e licenças / Documentation, versions and licenses
+        run: npm run release:check
+      - name: Miniapp
+        run: |
+          npm run test:ui
+          npm run test:pwa
+      - name: Rust — Formatação / Formatting
+        run: cargo fmt --all --check
+      - name: Rust — Clippy
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - name: Rust — Testes / Tests
+        run: cargo test --workspace --locked
