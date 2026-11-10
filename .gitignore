@@ -3,5 +3,6 @@
 /.local-data/
 /.test-data/
 /artifacts/
+/dist/
 *.log
 *.pem
