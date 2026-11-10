@@ -20,6 +20,9 @@
   </p>
 </div>
 
+**Linux / Omarchy:** [porte, instalação do pacote Arch e limites de validação](docs/pt-BR/linux-omarchy.md).
+
+
 **Português (Brasil)** · [English](README.en.md)
 
 **Versão: 0.1.0** · Windows 10/11 x64 · [MIT](LICENSE)

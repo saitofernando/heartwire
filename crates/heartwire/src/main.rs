@@ -7,6 +7,11 @@ use eframe::egui;
 mod app;
 mod controller;
 mod i18n;
+mod placement;
+#[cfg(windows)]
+mod platform;
+#[cfg(target_os = "linux")]
+#[path = "platform_linux.rs"]
 mod platform;
 mod preferences;
 mod qr;
@@ -32,7 +37,9 @@ fn main() -> eframe::Result {
     // `--quit` (used by the installer) asks a running HeartWire to stop audio
     // and exit; it never starts a new one.
     let signal = if quit { Signal::Quit } else { Signal::Show };
-    let Some(instance) = Instance::acquire(signal) else {
+    let Some(instance) =
+        Instance::acquire(signal).map_err(|e| eframe::Error::AppCreation(Box::new(e)))?
+    else {
         return Ok(());
     };
     if quit {
@@ -40,7 +47,13 @@ fn main() -> eframe::Result {
     }
 
     let data_dir = platform::data_dir();
-    let _ = fs::create_dir_all(&data_dir);
+    fs::create_dir_all(&data_dir).map_err(|e| eframe::Error::AppCreation(Box::new(e)))?;
+    #[cfg(target_os = "linux")]
+    {
+        use std::os::unix::fs::PermissionsExt;
+        fs::set_permissions(&data_dir, fs::Permissions::from_mode(0o700))
+            .map_err(|e| eframe::Error::AppCreation(Box::new(e)))?;
+    }
     let writer = tracing_appender::rolling::daily(data_dir.join("logs"), "heartwire.log");
     let (writer, log_guard) = tracing_appender::non_blocking(writer);
     let _ = tracing_subscriber::fmt()
@@ -65,10 +78,11 @@ fn main() -> eframe::Result {
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
             .with_title("HeartWire")
+            .with_app_id("com.heartwire.desktop")
             .with_inner_size([380.0, 570.0])
-            .with_decorations(false)
+            .with_decorations(cfg!(target_os = "linux"))
             .with_resizable(false)
-            .with_taskbar(false)
+            .with_taskbar(cfg!(target_os = "linux"))
             .with_always_on_top()
             .with_visible(false)
             .with_icon(window_icon()),

@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "target": "x86_64-pc-windows-msvc",
-  "scope": "Conservative locked Windows x64 package inventory: runtime, build and development packages are labeled separately; original package notices plus identified bundled native components. External system runtimes are labeled and are not relicensed.",
+  "scope": "Conservative locked target-specific package inventory: runtime, build and development packages are labeled separately; original package notices plus identified bundled native components. External system runtimes are labeled and are not relicensed.",
   "inputs": {
     "Cargo.lock": {
-      "sha256": "7a41c20dcf6916a387f0e56693439c901dc3e6096502bc4b13c136f5362cb4f0"
+      "sha256": "681aa6d50568dd366c8fa37678b92ba2a0eea6a17d2022f07425b593b712f970"
     },
     "package-lock.json": {
       "sha256": "d6ded85445a9d7f7a356b8faf47b67039705e6f10a0403c650dd9303523d74be"
@@ -16,18 +16,18 @@
       "sha256": "c961e0455a393b01195325ff78861e6adffb8d0a88ad147bb660e17af9ffd18f"
     },
     "crates/heartwire/Cargo.toml": {
-      "sha256": "424bdf373470c4e10bc9822796cdd5642edf7c8f2b8c779292374ab49d580656"
+      "sha256": "52940af44ece4365e0005cceb9ae5ad1d965be3a39e11005fa43f786e3017269"
     },
     "package.json": {
       "sha256": "5586951787646ec2057882cb3e5bab1e85840fadfd8d7e8e38ee12dbf85231b9"
     },
     "licenses/supplemental.json": {
-      "sha256": "5fee88b8feb96ad466e327962e781709c1b37435a513c8940f1de2a707314f48"
+      "sha256": "8bda3729a1155696168373c7720397774ce5ea68e428f352b65b72d5aeb0ac77"
     }
   },
   "summary": {
-    "packages": 403,
-    "cargo": 402,
+    "packages": 420,
+    "cargo": 419,
     "npm": 0,
     "issues": 0
   },
@@ -871,6 +871,32 @@
       ]
     },
     {
+      "id": "cargo:bit-set@0.10.0",
+      "ecosystem": "cargo",
+      "name": "bit-set",
+      "version": "0.10.0",
+      "licenseExpression": "Apache-2.0 OR MIT",
+      "declaredLicense": "Apache-2.0 OR MIT",
+      "scopes": [
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/bit-set/0.10.0/download",
+      "repository": "https://github.com/contain-rs/bit-set",
+      "licenseFiles": [
+        {
+          "path": "cargo:bit-set@0.10.0/LICENSE-APACHE",
+          "origin": "https://crates.io/api/v1/crates/bit-set/0.10.0/download",
+          "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90"
+        },
+        {
+          "path": "cargo:bit-set@0.10.0/LICENSE-MIT",
+          "origin": "https://crates.io/api/v1/crates/bit-set/0.10.0/download",
+          "sha256": "6b56ddc7cd80419e5e22e075f2252d720f6cbe17e3e2c17383095ee2712bcffa"
+        }
+      ]
+    },
+    {
       "id": "cargo:bit-vec@0.9.1",
       "ecosystem": "cargo",
       "name": "bit-vec",
@@ -1422,6 +1448,27 @@
           "path": "cargo:cmake@0.1.58/LICENSE-MIT",
           "origin": "https://crates.io/api/v1/crates/cmake/0.1.58/download",
           "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+        }
+      ]
+    },
+    {
+      "id": "cargo:codespan-reporting@0.13.1",
+      "ecosystem": "cargo",
+      "name": "codespan-reporting",
+      "version": "0.13.1",
+      "licenseExpression": "Apache-2.0",
+      "declaredLicense": "Apache-2.0",
+      "scopes": [
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/codespan-reporting/0.13.1/download",
+      "repository": "https://github.com/brendanzab/codespan",
+      "licenseFiles": [
+        {
+          "path": "cargo:codespan-reporting@0.13.1/LICENSE",
+          "origin": "https://crates.io/api/v1/crates/codespan-reporting/0.13.1/download",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
         }
       ]
     },
@@ -2166,6 +2213,32 @@
       ]
     },
     {
+      "id": "cargo:egui-wgpu@0.37.0",
+      "ecosystem": "cargo",
+      "name": "egui-wgpu",
+      "version": "0.37.0",
+      "licenseExpression": "MIT OR Apache-2.0",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "scopes": [
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/egui-wgpu/0.37.0/download",
+      "repository": "https://github.com/emilk/egui/tree/main/crates/egui-wgpu",
+      "licenseFiles": [
+        {
+          "path": "licenses/upstream/egui-0.37.0/LICENSE-APACHE",
+          "origin": "https://raw.githubusercontent.com/emilk/egui/0.37.0/LICENSE-APACHE",
+          "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90"
+        },
+        {
+          "path": "licenses/upstream/egui-0.37.0/LICENSE-MIT",
+          "origin": "https://raw.githubusercontent.com/emilk/egui/0.37.0/LICENSE-MIT",
+          "sha256": "95ca92f5f8ea5231f1580b3a2a799e8260af3114b900e1def5355a7f44bcf60c"
+        }
+      ]
+    },
+    {
       "id": "cargo:egui-winit@0.37.0",
       "ecosystem": "cargo",
       "name": "egui-winit",
@@ -2335,6 +2408,57 @@
       "source": "https://crates.io/api/v1/crates/epaint/0.37.0/download",
       "repository": "https://github.com/emilk/egui/tree/main/crates/epaint",
       "licenseFiles": [
+        {
+          "path": "licenses/upstream/egui-0.37.0/LICENSE-APACHE",
+          "origin": "https://raw.githubusercontent.com/emilk/egui/0.37.0/LICENSE-APACHE",
+          "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90"
+        },
+        {
+          "path": "licenses/upstream/egui-0.37.0/LICENSE-MIT",
+          "origin": "https://raw.githubusercontent.com/emilk/egui/0.37.0/LICENSE-MIT",
+          "sha256": "95ca92f5f8ea5231f1580b3a2a799e8260af3114b900e1def5355a7f44bcf60c"
+        }
+      ]
+    },
+    {
+      "id": "cargo:epaint_default_fonts@0.37.0",
+      "ecosystem": "cargo",
+      "name": "epaint_default_fonts",
+      "version": "0.37.0",
+      "licenseExpression": "(MIT OR Apache-2.0) AND OFL-1.1 AND Ubuntu-font-1.0",
+      "declaredLicense": "(MIT OR Apache-2.0) AND OFL-1.1 AND Ubuntu-font-1.0",
+      "scopes": [
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/epaint_default_fonts/0.37.0/download",
+      "repository": "https://github.com/emilk/egui/tree/main/crates/epaint_default_fonts",
+      "licenseFiles": [
+        {
+          "path": "cargo:epaint_default_fonts@0.37.0/fonts/Hack-Regular.txt",
+          "origin": "https://crates.io/api/v1/crates/epaint_default_fonts/0.37.0/download",
+          "sha256": "47c0cccbeec7e8614548cc485588b28149e7874188df5f41b36efebcee285c87"
+        },
+        {
+          "path": "cargo:epaint_default_fonts@0.37.0/fonts/OFL.txt",
+          "origin": "https://crates.io/api/v1/crates/epaint_default_fonts/0.37.0/download",
+          "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+        },
+        {
+          "path": "cargo:epaint_default_fonts@0.37.0/fonts/UFL.txt",
+          "origin": "https://crates.io/api/v1/crates/epaint_default_fonts/0.37.0/download",
+          "sha256": "2f0015108d68627bd788d313f529c21ff4da2c2c42a5e1f3883acc83480f9002"
+        },
+        {
+          "path": "cargo:epaint_default_fonts@0.37.0/fonts/egui-icons.txt",
+          "origin": "https://crates.io/api/v1/crates/epaint_default_fonts/0.37.0/download",
+          "sha256": "36dbbfd79d73974f864116879c17dd11559e1340277385f1ac52d8d29a5f5c79"
+        },
+        {
+          "path": "cargo:epaint_default_fonts@0.37.0/fonts/emoji-icon-font-mit-license.txt",
+          "origin": "https://crates.io/api/v1/crates/epaint_default_fonts/0.37.0/download",
+          "sha256": "b9d2c1d909aa149996fd4c91dcb92b2362a04431640c1d200959da94caf8cde1"
+        },
         {
           "path": "licenses/upstream/egui-0.37.0/LICENSE-APACHE",
           "origin": "https://raw.githubusercontent.com/emilk/egui/0.37.0/LICENSE-APACHE",
@@ -4401,6 +4525,28 @@
       ]
     },
     {
+      "id": "cargo:libm@0.2.16",
+      "ecosystem": "cargo",
+      "name": "libm",
+      "version": "0.2.16",
+      "licenseExpression": "MIT",
+      "declaredLicense": "MIT",
+      "scopes": [
+        "development",
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/libm/0.2.16/download",
+      "repository": "https://github.com/rust-lang/compiler-builtins",
+      "licenseFiles": [
+        {
+          "path": "cargo:libm@0.2.16/LICENSE.txt",
+          "origin": "https://crates.io/api/v1/crates/libm/0.2.16/download",
+          "sha256": "3823dda7cf046602f4b4e77ec8e227863dc4736037cc85bb33d9f19febe16bb7"
+        }
+      ]
+    },
+    {
       "id": "cargo:linebender_resource_handle@0.1.1",
       "ecosystem": "cargo",
       "name": "linebender_resource_handle",
@@ -4895,6 +5041,58 @@
           "path": "cargo:muda@0.21.2/LICENSE.spdx",
           "origin": "https://crates.io/api/v1/crates/muda/0.21.2/download",
           "sha256": "b99f9d43803f2ac979c50949df630bd8eeaf2fcd1b9fdb9093710d70f5dfb63d"
+        }
+      ]
+    },
+    {
+      "id": "cargo:naga-types@30.0.1",
+      "ecosystem": "cargo",
+      "name": "naga-types",
+      "version": "30.0.1",
+      "licenseExpression": "MIT OR Apache-2.0",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "scopes": [
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/naga-types/30.0.1/download",
+      "repository": "https://github.com/gfx-rs/wgpu",
+      "licenseFiles": [
+        {
+          "path": "cargo:naga-types@30.0.1/LICENSE.APACHE",
+          "origin": "https://crates.io/api/v1/crates/naga-types/30.0.1/download",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9"
+        },
+        {
+          "path": "cargo:naga-types@30.0.1/LICENSE.MIT",
+          "origin": "https://crates.io/api/v1/crates/naga-types/30.0.1/download",
+          "sha256": "dc0d97139e8205818c703741c7be7cb3b96888bd5917b8d6fc6133731e403c21"
+        }
+      ]
+    },
+    {
+      "id": "cargo:naga@30.0.1",
+      "ecosystem": "cargo",
+      "name": "naga",
+      "version": "30.0.1",
+      "licenseExpression": "MIT OR Apache-2.0",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "scopes": [
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/naga/30.0.1/download",
+      "repository": "https://github.com/gfx-rs/wgpu",
+      "licenseFiles": [
+        {
+          "path": "cargo:naga@30.0.1/LICENSE.APACHE",
+          "origin": "https://crates.io/api/v1/crates/naga/30.0.1/download",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9"
+        },
+        {
+          "path": "cargo:naga@30.0.1/LICENSE.MIT",
+          "origin": "https://crates.io/api/v1/crates/naga/30.0.1/download",
+          "sha256": "dc0d97139e8205818c703741c7be7cb3b96888bd5917b8d6fc6133731e403c21"
         }
       ]
     },
@@ -6422,6 +6620,32 @@
       ]
     },
     {
+      "id": "cargo:renderdoc-sys@1.1.0",
+      "ecosystem": "cargo",
+      "name": "renderdoc-sys",
+      "version": "1.1.0",
+      "licenseExpression": "MIT OR Apache-2.0",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "scopes": [
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/renderdoc-sys/1.1.0/download",
+      "repository": "https://github.com/ebkalderon/renderdoc-rs",
+      "licenseFiles": [
+        {
+          "path": "cargo:renderdoc-sys@1.1.0/LICENSE-APACHE",
+          "origin": "https://crates.io/api/v1/crates/renderdoc-sys/1.1.0/download",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "path": "cargo:renderdoc-sys@1.1.0/LICENSE-MIT",
+          "origin": "https://crates.io/api/v1/crates/renderdoc-sys/1.1.0/download",
+          "sha256": "24b2f2eff5a7622e87162823e260f00c6dfbce0e26d585d3d28c785f1edc80ed"
+        }
+      ]
+    },
+    {
       "id": "cargo:reqwest@0.12.28",
       "ecosystem": "cargo",
       "name": "reqwest",
@@ -6604,6 +6828,32 @@
       ]
     },
     {
+      "id": "cargo:rustc-hash@1.1.0",
+      "ecosystem": "cargo",
+      "name": "rustc-hash",
+      "version": "1.1.0",
+      "licenseExpression": "Apache-2.0 OR MIT",
+      "declaredLicense": "Apache-2.0/MIT",
+      "scopes": [
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/rustc-hash/1.1.0/download",
+      "repository": "https://github.com/rust-lang-nursery/rustc-hash",
+      "licenseFiles": [
+        {
+          "path": "cargo:rustc-hash@1.1.0/LICENSE-APACHE",
+          "origin": "https://crates.io/api/v1/crates/rustc-hash/1.1.0/download",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "path": "cargo:rustc-hash@1.1.0/LICENSE-MIT",
+          "origin": "https://crates.io/api/v1/crates/rustc-hash/1.1.0/download",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        }
+      ]
+    },
+    {
       "id": "cargo:rustc-hash@2.1.3",
       "ecosystem": "cargo",
       "name": "rustc-hash",
@@ -6611,9 +6861,10 @@
       "licenseExpression": "Apache-2.0 OR MIT",
       "declaredLicense": "Apache-2.0 OR MIT",
       "scopes": [
-        "development"
+        "development",
+        "runtime"
       ],
-      "category": "rust-build-development",
+      "category": "rust-runtime",
       "source": "https://crates.io/api/v1/crates/rustc-hash/2.1.3/download",
       "repository": "https://github.com/rust-lang/rustc-hash",
       "licenseFiles": [
@@ -8575,6 +8826,32 @@
       ]
     },
     {
+      "id": "cargo:type-map@0.5.1",
+      "ecosystem": "cargo",
+      "name": "type-map",
+      "version": "0.5.1",
+      "licenseExpression": "MIT OR Apache-2.0",
+      "declaredLicense": "MIT/Apache-2.0",
+      "scopes": [
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/type-map/0.5.1/download",
+      "repository": "https://github.com/kardeiz/type-map",
+      "licenseFiles": [
+        {
+          "path": "cargo:type-map@0.5.1/LICENSE-APACHE",
+          "origin": "https://crates.io/api/v1/crates/type-map/0.5.1/download",
+          "sha256": "00fb0b04768f258499afeafd0ed3f84fe24ca28921641741c08ca5750a31adfe"
+        },
+        {
+          "path": "cargo:type-map@0.5.1/LICENSE-MIT",
+          "origin": "https://crates.io/api/v1/crates/type-map/0.5.1/download",
+          "sha256": "6e9587a31f8b4a064ace93efa00c5c8612faccb68da790e728fcb3851973749b"
+        }
+      ]
+    },
+    {
       "id": "cargo:typenum@1.20.1",
       "ecosystem": "cargo",
       "name": "typenum",
@@ -8661,9 +8938,10 @@
       "declaredLicense": "(MIT OR Apache-2.0) AND Unicode-3.0",
       "scopes": [
         "build",
-        "development"
+        "development",
+        "runtime"
       ],
-      "category": "rust-build-development",
+      "category": "rust-runtime",
       "source": "https://crates.io/api/v1/crates/unicode-ident/1.0.27/download",
       "repository": "https://github.com/dtolnay/unicode-ident",
       "licenseFiles": [
@@ -8742,6 +9020,37 @@
         {
           "path": "cargo:unicode-segmentation@1.13.3/LICENSE-MIT",
           "origin": "https://crates.io/api/v1/crates/unicode-segmentation/1.13.3/download",
+          "sha256": "7b63ecd5f1902af1b63729947373683c32745c16a10e8e6292e2e2dcd7e90ae0"
+        }
+      ]
+    },
+    {
+      "id": "cargo:unicode-width@0.2.3",
+      "ecosystem": "cargo",
+      "name": "unicode-width",
+      "version": "0.2.3",
+      "licenseExpression": "MIT OR Apache-2.0",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "scopes": [
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/unicode-width/0.2.3/download",
+      "repository": "https://github.com/unicode-rs/unicode-width",
+      "licenseFiles": [
+        {
+          "path": "cargo:unicode-width@0.2.3/COPYRIGHT",
+          "origin": "https://crates.io/api/v1/crates/unicode-width/0.2.3/download",
+          "sha256": "23860c2a7b5d96b21569afedf033469bab9fe14a1b24a35068b8641c578ce24d"
+        },
+        {
+          "path": "cargo:unicode-width@0.2.3/LICENSE-APACHE",
+          "origin": "https://crates.io/api/v1/crates/unicode-width/0.2.3/download",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+        },
+        {
+          "path": "cargo:unicode-width@0.2.3/LICENSE-MIT",
+          "origin": "https://crates.io/api/v1/crates/unicode-width/0.2.3/download",
           "sha256": "7b63ecd5f1902af1b63729947373683c32745c16a10e8e6292e2e2dcd7e90ae0"
         }
       ]
@@ -9300,6 +9609,162 @@
           "path": "cargo:weezl@0.1.12/LICENSE-MIT",
           "origin": "https://crates.io/api/v1/crates/weezl/0.1.12/download",
           "sha256": "573f5227db835cd30bbdd3aed3f82615f80119a4d5c82b4daf642dbfe2b6afde"
+        }
+      ]
+    },
+    {
+      "id": "cargo:wgpu-core-deps-windows-linux-android@30.0.1",
+      "ecosystem": "cargo",
+      "name": "wgpu-core-deps-windows-linux-android",
+      "version": "30.0.1",
+      "licenseExpression": "MIT OR Apache-2.0",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "scopes": [
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/wgpu-core-deps-windows-linux-android/30.0.1/download",
+      "repository": "https://github.com/gfx-rs/wgpu",
+      "licenseFiles": [
+        {
+          "path": "cargo:wgpu-core-deps-windows-linux-android@30.0.1/LICENSE.APACHE",
+          "origin": "https://crates.io/api/v1/crates/wgpu-core-deps-windows-linux-android/30.0.1/download",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9"
+        },
+        {
+          "path": "cargo:wgpu-core-deps-windows-linux-android@30.0.1/LICENSE.MIT",
+          "origin": "https://crates.io/api/v1/crates/wgpu-core-deps-windows-linux-android/30.0.1/download",
+          "sha256": "dc0d97139e8205818c703741c7be7cb3b96888bd5917b8d6fc6133731e403c21"
+        }
+      ]
+    },
+    {
+      "id": "cargo:wgpu-core@30.0.1",
+      "ecosystem": "cargo",
+      "name": "wgpu-core",
+      "version": "30.0.1",
+      "licenseExpression": "MIT OR Apache-2.0",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "scopes": [
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/wgpu-core/30.0.1/download",
+      "repository": "https://github.com/gfx-rs/wgpu",
+      "licenseFiles": [
+        {
+          "path": "cargo:wgpu-core@30.0.1/LICENSE.APACHE",
+          "origin": "https://crates.io/api/v1/crates/wgpu-core/30.0.1/download",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9"
+        },
+        {
+          "path": "cargo:wgpu-core@30.0.1/LICENSE.MIT",
+          "origin": "https://crates.io/api/v1/crates/wgpu-core/30.0.1/download",
+          "sha256": "dc0d97139e8205818c703741c7be7cb3b96888bd5917b8d6fc6133731e403c21"
+        }
+      ]
+    },
+    {
+      "id": "cargo:wgpu-hal@30.0.1",
+      "ecosystem": "cargo",
+      "name": "wgpu-hal",
+      "version": "30.0.1",
+      "licenseExpression": "MIT OR Apache-2.0",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "scopes": [
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/wgpu-hal/30.0.1/download",
+      "repository": "https://github.com/gfx-rs/wgpu",
+      "licenseFiles": [
+        {
+          "path": "cargo:wgpu-hal@30.0.1/LICENSE.APACHE",
+          "origin": "https://crates.io/api/v1/crates/wgpu-hal/30.0.1/download",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9"
+        },
+        {
+          "path": "cargo:wgpu-hal@30.0.1/LICENSE.MIT",
+          "origin": "https://crates.io/api/v1/crates/wgpu-hal/30.0.1/download",
+          "sha256": "dc0d97139e8205818c703741c7be7cb3b96888bd5917b8d6fc6133731e403c21"
+        }
+      ]
+    },
+    {
+      "id": "cargo:wgpu-naga-bridge@30.0.1",
+      "ecosystem": "cargo",
+      "name": "wgpu-naga-bridge",
+      "version": "30.0.1",
+      "licenseExpression": "MIT OR Apache-2.0",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "scopes": [
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/wgpu-naga-bridge/30.0.1/download",
+      "repository": "https://github.com/gfx-rs/wgpu",
+      "licenseFiles": [
+        {
+          "path": "cargo:wgpu-naga-bridge@30.0.1/LICENSE.APACHE",
+          "origin": "https://crates.io/api/v1/crates/wgpu-naga-bridge/30.0.1/download",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9"
+        },
+        {
+          "path": "cargo:wgpu-naga-bridge@30.0.1/LICENSE.MIT",
+          "origin": "https://crates.io/api/v1/crates/wgpu-naga-bridge/30.0.1/download",
+          "sha256": "dc0d97139e8205818c703741c7be7cb3b96888bd5917b8d6fc6133731e403c21"
+        }
+      ]
+    },
+    {
+      "id": "cargo:wgpu-types@30.0.1",
+      "ecosystem": "cargo",
+      "name": "wgpu-types",
+      "version": "30.0.1",
+      "licenseExpression": "MIT OR Apache-2.0",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "scopes": [
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/wgpu-types/30.0.1/download",
+      "repository": "https://github.com/gfx-rs/wgpu",
+      "licenseFiles": [
+        {
+          "path": "cargo:wgpu-types@30.0.1/LICENSE.APACHE",
+          "origin": "https://crates.io/api/v1/crates/wgpu-types/30.0.1/download",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9"
+        },
+        {
+          "path": "cargo:wgpu-types@30.0.1/LICENSE.MIT",
+          "origin": "https://crates.io/api/v1/crates/wgpu-types/30.0.1/download",
+          "sha256": "dc0d97139e8205818c703741c7be7cb3b96888bd5917b8d6fc6133731e403c21"
+        }
+      ]
+    },
+    {
+      "id": "cargo:wgpu@30.0.1",
+      "ecosystem": "cargo",
+      "name": "wgpu",
+      "version": "30.0.1",
+      "licenseExpression": "MIT OR Apache-2.0",
+      "declaredLicense": "MIT OR Apache-2.0",
+      "scopes": [
+        "runtime"
+      ],
+      "category": "rust-runtime",
+      "source": "https://crates.io/api/v1/crates/wgpu/30.0.1/download",
+      "repository": "https://github.com/gfx-rs/wgpu",
+      "licenseFiles": [
+        {
+          "path": "cargo:wgpu@30.0.1/LICENSE.APACHE",
+          "origin": "https://crates.io/api/v1/crates/wgpu/30.0.1/download",
+          "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9"
+        },
+        {
+          "path": "cargo:wgpu@30.0.1/LICENSE.MIT",
+          "origin": "https://crates.io/api/v1/crates/wgpu/30.0.1/download",
+          "sha256": "dc0d97139e8205818c703741c7be7cb3b96888bd5917b8d6fc6133731e403c21"
         }
       ]
     },

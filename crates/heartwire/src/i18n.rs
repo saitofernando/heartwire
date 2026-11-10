@@ -66,7 +66,7 @@ const PT: Texts = Texts {
     output: "Saída de áudio do PC",
     mic_destination: "Destino do microfone no PC",
     refresh: "Atualizar dispositivos",
-    system_default: "Padrão do Windows",
+    system_default: "Padrão do sistema",
     default_suffix: "padrão",
     virtual_suffix: "cabo virtual",
     unavailable: "Dispositivo indisponível — selecione outro",
@@ -91,7 +91,7 @@ const PT: Texts = Texts {
     language: "Idioma",
     port: "Porta",
     stopped_settings: "Pare a conexão para alterar a porta e o áudio.",
-    autostart: "Iniciar com o Windows",
+    autostart: "Iniciar com o sistema",
     autostart_hint: "Retoma o áudio na bandeja.",
     help_items: [
         (
@@ -108,7 +108,11 @@ const PT: Texts = Texts {
         ),
         (
             "Microfone nos aplicativos",
-            "Escolha CABLE Input aqui e CABLE Output como microfone no aplicativo. Requer VB-CABLE instalado.",
+            if cfg!(target_os = "linux") {
+                "Selecione a saída virtual HeartWire aqui e HeartWire Microphone no outro aplicativo. Veja a configuração Linux na documentação."
+            } else {
+                "Escolha CABLE Input aqui e CABLE Output como microfone no aplicativo. Requer VB-CABLE instalado."
+            },
         ),
         (
             "Modo Leitor do Safari",
@@ -120,8 +124,8 @@ const PT: Texts = Texts {
         ),
     ],
     refreshed: "Dispositivos atualizados.",
-    autostart_enabled: "Início com o Windows ativado.",
-    autostart_disabled: "Início com o Windows desativado.",
+    autostart_enabled: "Início com o sistema ativado.",
+    autostart_disabled: "Início com o sistema desativado.",
     copied: "Endereço copiado.",
     invalid_port: "Escolha uma porta entre 1 e 65535.",
     demo_qr: "Boa mira! Você leu o QR do print. Para conectar, use o QR do HeartWire no seu PC. ♥",
@@ -141,7 +145,7 @@ const EN: Texts = Texts {
     output: "PC audio output",
     mic_destination: "Microphone destination on PC",
     refresh: "Refresh devices",
-    system_default: "Windows default",
+    system_default: "System default",
     default_suffix: "default",
     virtual_suffix: "virtual cable",
     unavailable: "Device unavailable — select another",
@@ -166,7 +170,7 @@ const EN: Texts = Texts {
     language: "Language",
     port: "Port",
     stopped_settings: "Stop the connection to change the port and audio.",
-    autostart: "Start with Windows",
+    autostart: "Start with system",
     autostart_hint: "Resumes audio in the tray.",
     help_items: [
         (
@@ -183,7 +187,11 @@ const EN: Texts = Texts {
         ),
         (
             "Microphone in apps",
-            "Choose CABLE Input here and CABLE Output as the microphone in your app. Requires VB-CABLE installed.",
+            if cfg!(target_os = "linux") {
+                "Select the HeartWire virtual output here and HeartWire Microphone in the other app. See the Linux setup guide."
+            } else {
+                "Choose CABLE Input here and CABLE Output as the microphone in your app. Requires VB-CABLE installed."
+            },
         ),
         (
             "Safari Reader",
@@ -195,8 +203,8 @@ const EN: Texts = Texts {
         ),
     ],
     refreshed: "Devices refreshed.",
-    autostart_enabled: "Start with Windows enabled.",
-    autostart_disabled: "Start with Windows disabled.",
+    autostart_enabled: "Start with system enabled.",
+    autostart_disabled: "Start with system disabled.",
     copied: "Address copied.",
     invalid_port: "Choose a port between 1 and 65535.",
     demo_qr: "Nice shot! You scanned the screenshot QR. To connect, use the QR in HeartWire on your PC. ♥",

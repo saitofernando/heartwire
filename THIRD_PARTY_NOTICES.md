@@ -2,7 +2,7 @@
 
 O projeto tem sua própria [licença](LICENSE). As dependências mantêm suas
 licenças, direitos autorais e avisos originais; este documento não as
-relicencia. O inventário atual cobre **402 pacotes Cargo,
+relicencia. O inventário atual cobre **419 pacotes Cargo,
 0 pacotes npm e os componentes nativos identificados**
 para `x86_64-pc-windows-msvc`, incluindo ferramentas de compilação e testes
 rotuladas separadamente. Uma ferramenta inventariada pode estar ausente do

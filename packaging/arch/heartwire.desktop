@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=HeartWire
+Comment=Áudio local entre o PC e celular
+Exec=heartwire
+Icon=heartwire
+Terminal=false
+Categories=AudioVideo;Audio;
+StartupWMClass=com.heartwire.desktop

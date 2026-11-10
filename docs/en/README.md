@@ -22,3 +22,5 @@
 - [Authorship and components](../../CREDITS.en.md)
 - [MIT](../../LICENSE) and [NOTICE](../../NOTICE)
 - [Third-party notices](../../THIRD_PARTY_NOTICES.md)
+
+- [Linux / Omarchy](linux-omarchy.md)

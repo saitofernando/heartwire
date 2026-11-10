@@ -8,13 +8,14 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const target = "x86_64-pc-windows-msvc";
+const linux = process.argv.includes("--linux");
+const target = linux ? "x86_64-unknown-linux-gnu" : "x86_64-pc-windows-msvc";
 const args = new Set(process.argv.slice(2));
 for (const arg of args) {
-  if (!["--check", "--refresh-upstream", "--help"].includes(arg)) throw new Error(`Unknown argument: ${arg}`);
+  if (!["--check", "--refresh-upstream", "--help", "--linux"].includes(arg)) throw new Error(`Unknown argument: ${arg}`);
 }
 if (args.has("--help")) {
-  console.log("node scripts/third-party-notices.mjs [--check | --refresh-upstream]\n--check: compare outputs without writing; --refresh-upstream: cache omitted licenses from exact upstream commits.");
+  console.log("node scripts/third-party-notices.mjs [--linux] [--check | --refresh-upstream]\n--check: compare outputs without writing; --refresh-upstream: cache omitted licenses from exact upstream commits.");
   process.exit(0);
 }
 if (args.has("--check") && args.has("--refresh-upstream")) throw new Error("--check cannot refresh upstream files.");
@@ -36,7 +37,7 @@ const publicUrl = (value) => {
     return parsed.toString();
   } catch { return null; }
 };
-const licenseName = /^(?:unlicense|licen[sc]e|copying|notice|copyright|patents?)(?:[-._]|$)/i;
+const licenseName = /^(?:unlicense|licen[sc]e|copying|notice|copyright|patents?|ofl|ufl)(?:[-._]|$)/i;
 const ignoredDirs = new Set([".git", "node_modules", "target", ".github"]);
 function licenseFiles(directory, relative = "", depth = 0) {
   if (depth > 12) return [];
@@ -45,7 +46,7 @@ function licenseFiles(directory, relative = "", depth = 0) {
   for (const item of fs.readdirSync(path.join(directory, relative), { withFileTypes: true }).sort((a, b) => order(a.name, b.name))) {
     const name = path.join(relative, item.name);
     if (item.isDirectory() && !ignoredDirs.has(item.name)) found.push(...licenseFiles(directory, name, depth + 1));
-    else if (item.isFile() && (licenseName.test(item.name) || (inLicenseDirectory && /(?:\.(?:txt|md|rst|html|license)|^[^.]+)$/i.test(item.name)))) {
+    else if (item.isFile() && (licenseName.test(item.name) || (relative.split(path.sep).includes("fonts") && item.name.endsWith(".txt")) || (inLicenseDirectory && /(?:\.(?:txt|md|rst|html|license)|^[^.]+)$/i.test(item.name)))) {
       // SDK binary names / image fixtures are never copied into notice files.
       if (!/\.(?:png|jpe?g|gif|ico|pdf|dll|lib|exe|wasm|gz|zip|woff2?)$/i.test(item.name)) found.push(name);
     }
@@ -211,7 +212,7 @@ for (const component of supplements.components) {
 records.sort((a, b) => order(a.id, b.id));
 issues.sort((a, b) => order(a.id, b.id));
 const inputs = ["Cargo.lock", "package-lock.json", "Cargo.toml", "crates/bridge-core/Cargo.toml", "crates/heartwire/Cargo.toml", "package.json", "licenses/supplemental.json"];
-const inventory = { schemaVersion: 1, target, scope: "Conservative locked Windows x64 package inventory: runtime, build and development packages are labeled separately; original package notices plus identified bundled native components. External system runtimes are labeled and are not relicensed.",
+const inventory = { schemaVersion: 1, target, scope: "Conservative locked target-specific package inventory: runtime, build and development packages are labeled separately; original package notices plus identified bundled native components. External system runtimes are labeled and are not relicensed.",
   inputs: Object.fromEntries(inputs.filter((file) => fs.existsSync(path.join(root, file))).map((file) => [file, { sha256: hash(read(path.join(root, file))) }])),
   summary: { packages: records.length, cargo: records.filter((r) => r.ecosystem === "cargo").length, npm: records.filter((r) => r.ecosystem === "npm").length, issues: issues.length }, issues, dependencies: records };
 
@@ -298,7 +299,9 @@ and fails its check when generated files drift or original notices are missing.
 Verified upstream supplements are checked into \`licenses/upstream/\` with
 public source URLs and SHA-256 hashes in \`licenses/supplemental.json\`.
 `;
-const outputs = new Map([["licenses/dependencies.json", json(inventory)], ["licenses/THIRD_PARTY_NOTICES.txt", aggregate], ["THIRD_PARTY_NOTICES.md", guide]]);
+const outputDir = linux ? "licenses/linux" : "licenses";
+const platformGuide = linux ? guide.replaceAll("licenses/THIRD_PARTY_NOTICES.txt", "licenses/linux/THIRD_PARTY_NOTICES.txt").replaceAll("licenses/dependencies.json", "licenses/linux/dependencies.json").replaceAll("scripts/third-party-notices.mjs", "scripts/third-party-notices.mjs --linux").replaceAll("Windows x64", "Linux x64") : guide;
+const outputs = new Map([[`${outputDir}/dependencies.json`, json(inventory)], [`${outputDir}/THIRD_PARTY_NOTICES.txt`, aggregate], [linux ? "THIRD_PARTY_NOTICES.linux.md" : "THIRD_PARTY_NOTICES.md", platformGuide]]);
 const changed = [];
 for (const [relative, content] of outputs) {
   const destination = path.join(root, relative);

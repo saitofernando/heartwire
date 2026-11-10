@@ -4,6 +4,11 @@
 
 Mudanças relevantes do HeartWire. Organização baseada em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/); números seguem [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 
+## Em desenvolvimento — Linux / Omarchy
+
+- Porte de áudio PipeWire/PulseAudio, bandeja D-Bus, fontes, caminhos XDG, autostart e instância única.
+- Gerador de pacote Arch e documentação; execução Linux ainda não validada. Nenhum instalador Windows publicado foi substituído.
+
 ## 0.1.0 — 2026-10-24
 
 Primeiro lançamento do HeartWire.

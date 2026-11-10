@@ -22,3 +22,5 @@
 - [Autoria e componentes](../../CREDITS.md)
 - [MIT](../../LICENSE) e [NOTICE](../../NOTICE)
 - [Avisos de terceiros](../../THIRD_PARTY_NOTICES.md)
+
+- [Linux / Omarchy](linux-omarchy.md)

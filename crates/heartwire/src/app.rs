@@ -16,9 +16,11 @@ use tracing_appender::non_blocking::WorkerGuard;
 use tray_icon::{MouseButton, MouseButtonState, TrayIconEvent, menu::MenuEvent};
 use winit::{
     dpi::{LogicalSize, PhysicalPosition},
-    raw_window_handle::{HasWindowHandle, RawWindowHandle},
     window::Window,
 };
+
+#[cfg(windows)]
+use winit::raw_window_handle::{HasWindowHandle, RawWindowHandle};
 
 use crate::{
     controller::Core,
@@ -131,6 +133,7 @@ impl HeartWireApp {
         let ctx = cc.egui_ctx.clone();
         theme::apply(&ctx);
         let window = cc.winit_window().cloned().ok_or("no native window")?;
+        #[cfg(windows)]
         if let Ok(handle) = window.window_handle()
             && let RawWindowHandle::Win32(handle) = handle.as_raw()
         {
@@ -299,7 +302,7 @@ impl HeartWireApp {
             .popup
             .anchor
             .map_or((0, 0), |icon| (icon.left, icon.top));
-        if let Some(screen) = platform::screen_at(point.0, point.1) {
+        if let Some(screen) = platform::screen_at(point.0, point.1, &self.window) {
             let (x, y) = platform::popup_position(
                 self.popup.anchor,
                 size.width as i32,

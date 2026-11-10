@@ -21,6 +21,24 @@
     },
     {
       "appliesTo": [
+        "cargo:accesskit_atspi_common@0.21.0"
+      ],
+      "reason": "License omitted from the published crate; original files at the commit recorded in .cargo_vcs_info.json.",
+      "documents": [
+        {
+          "path": "licenses/upstream/accesskit_atspi_common-0.21.0/LICENSE-MIT",
+          "origin": "https://raw.githubusercontent.com/AccessKit/accesskit/ce8164ba92995cfa86005b6259115e08c8244253/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        },
+        {
+          "path": "licenses/upstream/accesskit_atspi_common-0.21.0/LICENSE-APACHE",
+          "origin": "https://raw.githubusercontent.com/AccessKit/accesskit/ce8164ba92995cfa86005b6259115e08c8244253/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        }
+      ]
+    },
+    {
+      "appliesTo": [
         "cargo:accesskit_consumer@0.39.1"
       ],
       "reason": "License omitted from the published crate; original files at the commit recorded in .cargo_vcs_info.json.",
@@ -32,6 +50,24 @@
         },
         {
           "path": "licenses/upstream/accesskit_consumer-0.39.1/LICENSE-APACHE",
+          "origin": "https://raw.githubusercontent.com/AccessKit/accesskit/ce8164ba92995cfa86005b6259115e08c8244253/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+        }
+      ]
+    },
+    {
+      "appliesTo": [
+        "cargo:accesskit_unix@0.24.0"
+      ],
+      "reason": "License omitted from the published crate; original files at the commit recorded in .cargo_vcs_info.json.",
+      "documents": [
+        {
+          "path": "licenses/upstream/accesskit_unix-0.24.0/LICENSE-MIT",
+          "origin": "https://raw.githubusercontent.com/AccessKit/accesskit/ce8164ba92995cfa86005b6259115e08c8244253/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+        },
+        {
+          "path": "licenses/upstream/accesskit_unix-0.24.0/LICENSE-APACHE",
           "origin": "https://raw.githubusercontent.com/AccessKit/accesskit/ce8164ba92995cfa86005b6259115e08c8244253/LICENSE-APACHE",
           "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
         }
@@ -125,11 +161,13 @@
     {
       "appliesTo": [
         "cargo:ecolor@0.37.0",
-        "cargo:egui@0.37.0",
+        "cargo:egui-wgpu@0.37.0",
         "cargo:egui-winit@0.37.0",
+        "cargo:egui@0.37.0",
         "cargo:egui_glow@0.37.0",
         "cargo:emath@0.37.0",
-        "cargo:epaint@0.37.0"
+        "cargo:epaint@0.37.0",
+        "cargo:epaint_default_fonts@0.37.0"
       ],
       "reason": "License omitted from the published crates; the commit recorded in .cargo_vcs_info.json is not public, so the original files come from the matching upstream release tag 0.37.0.",
       "documents": [
@@ -186,6 +224,24 @@
           "path": "licenses/upstream/khronos_api-3.1.0/LICENSE",
           "origin": "https://raw.githubusercontent.com/brendanzab/gl-rs//f150967b1c44ae888e6676f93f639ebc82771bdc/LICENSE",
           "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        }
+      ]
+    },
+    {
+      "appliesTo": [
+        "cargo:libappindicator-sys@0.9.0"
+      ],
+      "reason": "Sys crate omits license texts. Originals are from the parent libappindicator 0.9.0 source archive; both record the same upstream commit eafd1e3682a1247f595410266091e9684021cb6f.",
+      "documents": [
+        {
+          "path": "licenses/upstream/libappindicator-sys-0.9.0/LICENSE-MIT",
+          "origin": "https://crates.io/api/v1/crates/libappindicator/0.9.0/download",
+          "sha256": "eb227437252b2a7a9c1fc342c93ade1f3d7ce38cc6dd754f613db07d53ceff0b"
+        },
+        {
+          "path": "licenses/upstream/libappindicator-sys-0.9.0/LICENSE-APACHE",
+          "origin": "https://crates.io/api/v1/crates/libappindicator/0.9.0/download",
+          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
         }
       ]
     },

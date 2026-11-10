@@ -1,10 +1,14 @@
 //! Palette and type of the original panel, translated to egui.
 
+#[cfg(windows)]
 use std::sync::Arc;
 
 use eframe::egui::{
-    self, Color32, CornerRadius, FontData, FontDefinitions, FontFamily, FontId, Stroke, TextStyle,
+    self, Color32, CornerRadius, FontDefinitions, FontFamily, FontId, Stroke, TextStyle,
 };
+
+#[cfg(windows)]
+use eframe::egui::FontData;
 
 pub const BACKGROUND: Color32 = Color32::from_rgb(0x17, 0x1b, 0x18);
 pub const TEXT: Color32 = Color32::from_rgb(0xe7, 0xec, 0xe8);
@@ -60,14 +64,23 @@ const ICONS: &str = "icons";
 
 // Segoe Fluent Icons (Windows 11) and Segoe MDL2 Assets (Windows 10) share
 // these code points.
+#[cfg(windows)]
 pub const HEADPHONES: char = '\u{E7F6}';
+#[cfg(windows)]
 pub const MICROPHONE: char = '\u{E720}';
+#[cfg(windows)]
 pub const PHONE: char = '\u{E8EA}';
+#[cfg(windows)]
 pub const CHECK: char = '\u{E73E}';
+#[cfg(windows)]
 pub const REFRESH: char = '\u{E72C}';
+#[cfg(windows)]
 pub const COPY: char = '\u{E8C8}';
+#[cfg(windows)]
 pub const OPEN: char = '\u{E8A7}';
+#[cfg(windows)]
 pub const PLAY: char = '\u{E768}';
+#[cfg(windows)]
 pub const STOP: char = '\u{E71A}';
 
 pub fn semibold(size: f32) -> FontId {
@@ -141,6 +154,7 @@ pub fn apply(ctx: &egui::Context) {
 
 /// Windows fonts only, nothing bundled: Segoe UI for text and the system icon
 /// font for symbols. Both ship with every supported Windows.
+#[cfg(windows)]
 fn fonts() -> FontDefinitions {
     let mut fonts = FontDefinitions::empty();
     let directory = std::env::var_os("WINDIR")
@@ -172,5 +186,45 @@ fn fonts() -> FontDefinitions {
     fonts
         .families
         .insert(FontFamily::Name(ICONS.into()), family(icons));
+    fonts
+}
+
+#[cfg(target_os = "linux")]
+pub const HEADPHONES: char = '♫';
+
+#[cfg(target_os = "linux")]
+pub const MICROPHONE: char = '●';
+
+#[cfg(target_os = "linux")]
+pub const PHONE: char = '▯';
+
+#[cfg(target_os = "linux")]
+pub const CHECK: char = '✓';
+
+#[cfg(target_os = "linux")]
+pub const REFRESH: char = '↻';
+
+#[cfg(target_os = "linux")]
+pub const COPY: char = '⧉';
+
+#[cfg(target_os = "linux")]
+pub const OPEN: char = '↗';
+
+#[cfg(target_os = "linux")]
+pub const PLAY: char = '▶';
+
+#[cfg(target_os = "linux")]
+pub const STOP: char = '■';
+
+#[cfg(target_os = "linux")]
+fn fonts() -> FontDefinitions {
+    let mut fonts = FontDefinitions::default();
+    let fallback = fonts.families[&FontFamily::Proportional].clone();
+    fonts
+        .families
+        .insert(FontFamily::Name(SEMIBOLD.into()), fallback.clone());
+    fonts
+        .families
+        .insert(FontFamily::Name(ICONS.into()), fallback);
     fonts
 }

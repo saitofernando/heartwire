@@ -1,0 +1,28 @@
+pkgname=heartwire
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='HeartWire — áudio local entre o PC e celular'
+arch=('x86_64')
+url='https://github.com/saitofernando/heartwire'
+license=('MIT')
+depends=('libpulse' 'pipewire-pulse' 'opus' 'libgl' 'libxkbcommon' 'wayland' 'dbus' 'xdg-utils')
+makedepends=('rust' 'pkgconf' 'cmake' 'nodejs')
+source=('source.tar.gz')
+build() {
+  cd "$srcdir/source"
+  cargo build --release --locked -p heartwire
+  node scripts/third-party-notices.mjs --linux --check
+}
+check() {
+  cd "$srcdir/source"
+  cargo test --workspace --locked
+}
+package() {
+  cd "$srcdir/source"
+  install -Dm755 target/release/heartwire "$pkgdir/usr/bin/heartwire"
+  install -Dm644 crates/heartwire/icons/128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/heartwire.png"
+  install -Dm644 packaging/arch/heartwire.desktop "$pkgdir/usr/share/applications/heartwire.desktop"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/heartwire/LICENSE"
+  install -Dm644 licenses/linux/THIRD_PARTY_NOTICES.txt "$pkgdir/usr/share/licenses/heartwire/THIRD_PARTY_NOTICES.txt"
+  install -Dm644 licenses/linux/dependencies.json "$pkgdir/usr/share/licenses/heartwire/dependencies.json"
+}

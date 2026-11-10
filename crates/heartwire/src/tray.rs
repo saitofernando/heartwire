@@ -41,7 +41,7 @@ impl Tray {
             .with_icon(Icon::from_rgba(image.into_raw(), width, height)?)
             .with_tooltip("HeartWire")
             .with_menu(Box::new(menu))
-            .with_menu_on_left_click(false)
+            .with_menu_on_left_click(cfg!(target_os = "linux"))
             .build()?;
         Ok(Self {
             icon,

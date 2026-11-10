@@ -4,6 +4,11 @@
 
 Notable HeartWire changes. Based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow [Semantic Versioning](https://semver.org/).
 
+## Unreleased — Linux / Omarchy
+
+- PipeWire/PulseAudio transport, D-Bus tray, fonts, XDG paths, autostart and single-instance support.
+- Arch package builder and documentation; Linux execution remains unverified. Published Windows installers are unchanged.
+
 ## 0.1.0 — 2026-10-24
 
 First HeartWire release.

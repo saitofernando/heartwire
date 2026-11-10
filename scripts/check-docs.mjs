@@ -39,6 +39,7 @@ const pairs = [
   ['VALIDACAO.md', 'VALIDACAO.en.md'],
   ['docs/pt-BR/README.md', 'docs/en/README.md'],
   ['docs/pt-BR/uso.md', 'docs/en/usage.md'],
+  ['docs/pt-BR/linux-omarchy.md', 'docs/en/linux-omarchy.md'],
   ['docs/pt-BR/solucao-de-problemas.md', 'docs/en/troubleshooting.md'],
   ['docs/pt-BR/seguranca.md', 'docs/en/security.md'],
   ['docs/pt-BR/desenvolvimento.md', 'docs/en/development.md'],
