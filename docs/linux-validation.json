@@ -1,31 +1,76 @@
 {
-  "date": "2026-11-10",
-  "host": "Windows x64",
-  "linux_execution_tested": false,
+  "date": "2026-11-11",
+  "source_version": "0.2.0",
+  "host": "Omarchy 4.5.0-3 / Hyprland / Quickshell 0.3.2 / Qt 6.12 / Arch Linux",
+  "compiler": "rustc 1.99.1 (Arch Linux)",
+  "node": "26.12.0",
+  "linux_execution_tested": true,
+  "plugin": "saito.heartwire",
   "checks": {
-    "cargo test --workspace --locked": {
-      "passed": 30,
-      "failed": 0
-    },
-    "node --test web/tests/*.test.mjs": {
-      "passed": 9,
-      "failed": 0
-    },
-    "cargo clippy --workspace --all-targets --locked -- -D warnings": "passed",
-    "cargo fmt --all --check": "passed",
-    "npm run release:check": "passed",
-    "node scripts/third-party-notices.mjs --linux --check": "passed",
-    "bash -n scripts/package-omarchy.sh": "passed",
-    "bash -n packaging/arch/PKGBUILD": "passed",
-    "cargo test -p bridge-core --lib audio_linux::tests --locked": {
-      "passed": 3,
-      "failed": 0
-    }
+    "release_check": true,
+    "linux_license_check": true,
+    "rustfmt": true,
+    "backend_core_clippy_deny_warnings": true,
+    "qml_syntax": true,
+    "qml_warning_free": false
   },
-  "notes": [
-    "CMake from installed Visual Studio BuildTools added to process PATH for local audio build",
-    "Linux PCM module compiled in Windows unit tests; no PulseAudio processes started by those tests",
-    "Native Unix socket and autostart integration remain to be validated on Linux",
-    "No Linux binary package or new Windows release published"
+  "tests": {
+    "backend": 3,
+    "bridge_core": 18,
+    "pwa": 9,
+    "failed": 0
+  },
+  "pipewire_device_enumeration": true,
+  "native_panel_dark_light_escape": {
+    "verified_on": "2026-11-10",
+    "repeated_this_session": false
+  },
+  "phone_streaming_tested": true,
+  "phone_validation": {
+    "package_version": "0.1.0-3",
+    "evidence": "User confirmed operation after LAN-only UFW correction; WebRTC peers observed without service error",
+    "phone_model": null,
+    "phone_os": null,
+    "browser": null,
+    "duration_seconds": null,
+    "latency_measured": false,
+    "microphone_end_to_end_verified": false
+  },
+  "qr": {
+    "decoded_from_screen": true,
+    "decoder": "zbarimg",
+    "generator_changed": false
+  },
+  "firewall": {
+    "root_cause": "UFW blocked inbound TCP 8081 from the phone",
+    "correction": "Persistent rule limited to the local interface and subnet",
+    "port": 8081,
+    "protocol": "tcp",
+    "changed_automatically_by_installer": false
+  },
+  "icons": {
+    "bar": "Derived from design/heartwire/heartwire-mono.svg with original geometry and theme mask",
+    "launcher": "Exact design/heartwire/app.svg"
+  },
+  "package": {
+    "file": "heartwire-0.1.0-3-x86_64.pkg.tar.zst",
+    "version": "0.1.0-3",
+    "bytes": 5632879,
+    "sha256": "bc3164123372dbef9a0e7acff4d1efa4ad3ecb3d1cf6efc23abd7801ce62c7cd",
+    "installed": true
+  },
+  "prepared_release": {
+    "version": "0.2.0",
+    "package_file": "heartwire-0.2.0-1-x86_64.pkg.tar.zst",
+    "checksums": "dist/linux/SHA256SUMS",
+    "installed": false,
+    "phone_test_repeated": false
+  },
+  "limits": [
+    "Phone model, OS, browser and duration were not reported",
+    "Phone microphone, login resume, prolonged use and end-to-end latency not validated",
+    "Windows 0.2.0 installer not built or tested",
+    "Browser UI suite not repeated; Node PWA tests passed",
+    "QML lint retains dynamic shell type and unqualified access warnings"
   ]
 }

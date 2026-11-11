@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+profile=${OMARCHY_BUILD_PROFILE:-omarchy-dev}
+export CARGO_BUILD_JOBS=${CARGO_BUILD_JOBS:-4}
+export CFLAGS=-fno-lto CXXFLAGS=-fno-lto
+unset RUSTFLAGS CARGO_ENCODED_RUSTFLAGS
+omarchy plugin validate linux/omarchy
+python3 linux/lint-qml.py
+cargo test --locked --profile "$profile" --no-default-features --features omarchy-backend -p heartwire --bin heartwire-backend
+cargo test --locked --profile "$profile" -p bridge-core --lib

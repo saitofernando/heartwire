@@ -4,10 +4,29 @@
 
 Notable HeartWire changes. Based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow [Semantic Versioning](https://semver.org/).
 
-## Unreleased — Linux / Omarchy
+## Unreleased
 
-- PipeWire/PulseAudio transport, D-Bus tray, fonts, XDG paths, autostart and single-instance support.
-- Arch package builder and documentation; Linux execution remains unverified. Published Windows installers are unchanged.
+## 0.2.0 — 2026-11-11
+
+### Added
+
+- Native Omarchy/Quickshell panel with Listen and Microphone modes, devices, port, link/QR, session startup and one Rust service shared across monitors.
+- Arch packaging with an incremental `omarchy-dev` profile, plugin backup during installation, documentation and third-party notices.
+
+### Changed
+
+- The Omarchy package uses QML for its interface and `heartwire-backend` for PipeWire/PulseAudio, without building egui or the KSNI tray. The Windows interface remains available.
+- Versions synchronized across Cargo, npm, PWA, Arch package and plugin manifest; published installer links are kept separate from the source version.
+
+### Fixed
+
+- Generic headphones icon replaced with the original cat: a theme-colored monochrome SVG in the bar and the color SVG in the launcher.
+- Documented the case where a phone reads the QR but cannot open its link: UFW blocked TCP port 8081. The test computer's rule allows only the local network; the package does not change the firewall automatically.
+
+### Validation
+
+- QR decoded from the screen, successful HTTPS response, observed WebRTC connections and user-confirmed phone operation after the firewall adjustment. Phone model, OS and duration were not reported.
+- Checks and limits are recorded in [VALIDACAO.en.md](VALIDACAO.en.md) and the [Linux guide](docs/en/linux-omarchy.md). No Windows 0.2.0 installer was built or revalidated; the published download remains 0.1.0.
 
 ## 0.1.0 — 2026-10-24
 

@@ -4,22 +4,22 @@
   "scope": "Conservative locked target-specific package inventory: runtime, build and development packages are labeled separately; original package notices plus identified bundled native components. External system runtimes are labeled and are not relicensed.",
   "inputs": {
     "Cargo.lock": {
-      "sha256": "681aa6d50568dd366c8fa37678b92ba2a0eea6a17d2022f07425b593b712f970"
+      "sha256": "e0c6c5fe3d3e2300596f7238ea7ea8d64f562bba24d66a7615890dd4e8f8a678"
     },
     "package-lock.json": {
-      "sha256": "d6ded85445a9d7f7a356b8faf47b67039705e6f10a0403c650dd9303523d74be"
+      "sha256": "f56990bfa2b1afd24a2b45a779e32b36045a7a3ca80eeb03ed23dcd07eff27e0"
     },
     "Cargo.toml": {
-      "sha256": "545113214458b6b42f0b226ebe14447b596aa8cd69118da3ea5758d5f7b85008"
+      "sha256": "8a8746fe9a5c427c49ead93739dea907f83fb9b3618b3837d231b6b33d28669b"
     },
     "crates/bridge-core/Cargo.toml": {
       "sha256": "c961e0455a393b01195325ff78861e6adffb8d0a88ad147bb660e17af9ffd18f"
     },
     "crates/heartwire/Cargo.toml": {
-      "sha256": "52940af44ece4365e0005cceb9ae5ad1d965be3a39e11005fa43f786e3017269"
+      "sha256": "000fe3411d4eb2f77e0940e4bd9c337fdb277293b95d47f0e815b47a41164136"
     },
     "package.json": {
-      "sha256": "5586951787646ec2057882cb3e5bab1e85840fadfd8d7e8e38ee12dbf85231b9"
+      "sha256": "84b5001a964311ab79d35e003be4cc70e0b18dc90e215126ea0c635985d88125"
     },
     "licenses/supplemental.json": {
       "sha256": "8bda3729a1155696168373c7720397774ce5ea68e428f352b65b72d5aeb0ac77"

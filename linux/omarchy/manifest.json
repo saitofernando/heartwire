@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "saito.heartwire",
+  "name": "HeartWire",
+  "version": "0.2.0",
+  "author": "Saito Fernando",
+  "license": "MIT",
+  "description": "Native Omarchy controls for heartwire",
+  "kinds": [
+    "service",
+    "bar-widget"
+  ],
+  "keepLoaded": true,
+  "entryPoints": {
+    "service": "Service.qml",
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "HeartWire",
+    "category": "Media",
+    "allowMultiple": false,
+    "defaultSection": "right"
+  }
+}

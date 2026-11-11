@@ -4,7 +4,7 @@ default-members = ["crates/bridge-core"]
 resolver = "2"
 
 [workspace.package]
-version = "0.1.0"
+version = "0.2.0"
 license = "MIT"
 authors = ["saitofernando <fernandosaito@hotmail.com.br>"]
 repository = "https://github.com/saitofernando/heartwire"
@@ -17,3 +17,12 @@ opt-level = 3
 lto = "thin"
 codegen-units = 1
 strip = "debuginfo"
+
+# Fast, repeatable desktop development; release remains available for distribution.
+[profile.omarchy-dev]
+inherits = "dev"
+opt-level = 1
+debug = 1
+lto = false
+codegen-units = 16
+incremental = true

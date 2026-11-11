@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+profile=${OMARCHY_BUILD_PROFILE:-omarchy-dev}
+case "$profile" in omarchy-dev|release) ;; *) echo 'Invalid build profile' >&2; exit 2;; esac
+export CARGO_BUILD_JOBS=${CARGO_BUILD_JOBS:-4}
+# GCC LTO objects cannot be linked by Rust's LLD. Keep one stable native-C configuration.
+export CFLAGS=-fno-lto CXXFLAGS=-fno-lto
+unset RUSTFLAGS CARGO_ENCODED_RUSTFLAGS
+cargo build --locked --profile "$profile" --no-default-features --features omarchy-backend -p heartwire --bin heartwire-backend

@@ -4,14 +4,14 @@
 
 ## Versão
 
-Versão atual: **0.1.0**. A fonte é `[workspace.package].version` de `Cargo.toml`. Crates internas, npm, lockfiles, cache da PWA, READMEs e primeira entrada versionada dos changelogs precisam coincidir. Este é o primeiro lançamento; mudanças ainda não lançadas ficam em **Não lançado** até receberem a próxima versão.
+Versão atual: **0.2.0**. A fonte é `[workspace.package].version` de `Cargo.toml`. Crates internas, npm, lockfiles, cache da PWA, READMEs e primeira entrada versionada dos changelogs precisam coincidir. O pacote Arch e o manifesto do plugin também acompanham essa versão. Mudanças futuras ficam em **Não lançado**.
 
 ```powershell
 npm run version:check
-npm run version:set -- 0.1.0
+npm run version:set -- 0.2.0
 ```
 
-O segundo comando define a versão do primeiro lançamento. Ele sincroniza arquivos e badges, sem criar commit, tag ou publicação. As notas dos dois changelogs são editadas manualmente.
+O segundo comando sincroniza arquivos, badges, pacote Arch (reiniciando `pkgrel` em 1 quando muda a versão) e manifesto do plugin, sem criar commit, tag ou publicação. Edite manualmente os dois changelogs e este guia. Links de instaladores Windows publicados não são alterados: só atualize-os após gerar e validar o artefato correspondente. Para 0.2.0, o download Windows permanece em 0.1.0.
 
 Usamos [Versionamento Semântico](https://semver.org/lang/pt-BR/). Durante 0.x, uma correção compatível incrementa o patch; capacidades significativas ou mudanças incompatíveis incrementam o minor. Os changelogs seguem [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/), com PT-BR primeiro e EN equivalente. Nunca reescreva uma versão já publicada.
 
@@ -36,6 +36,12 @@ pwsh -NoProfile -File scripts/package.ps1
 ```
 
 Mudanças no áudio exigem tom e silêncio com continuidade RTP. Testes em Edge não substituem Safari e iPhone físico. Relate claramente o que foi executado; não declare uma medição de latência total a partir do tamanho do quadro.
+
+## Preparar Linux / Omarchy
+
+Execute `npm run release:check`, `npm run test:pwa`, `cargo fmt --all --check`, `bash linux/test` e `bash scripts/package-omarchy.sh`. Verifique também as licenças Linux com `node scripts/third-party-notices.mjs --linux --check`. O pacote fica em `dist/linux/heartwire-<versão>-<pkgrel>-x86_64.pkg.tar.zst`, acompanhado de `SHA256SUMS`. Confira ícones, avisos e documentação dentro do pacote. Registre evidências e limites nos dois arquivos VALIDACAO e em `docs/linux-validation.json`; preserve a versão do pacote efetivamente testado no celular.
+
+A preparação Linux não comprova uma instalação Windows. Crie a tag anotada `v<versão>` depois dos checks e do commit. Push e publicação de release são etapas distintas; anexe somente artefatos gerados e testados, sem presumir um instalador Windows novo.
 
 ## Artefatos
 

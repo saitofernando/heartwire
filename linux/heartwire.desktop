@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=HeartWire
+Comment=Native Omarchy panel
+Comment[pt_BR]=Minipainel nativo do Omarchy
+Exec=heartwire
+Icon=heartwire
+Terminal=false
+Categories=Utility;
+StartupWMClass=heartwire

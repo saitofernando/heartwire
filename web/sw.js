@@ -2,7 +2,7 @@
 
 // Only the public shell belongs in this cache. Audio, SDP, peer counts, status,
 // query strings and microphone permissions must always remain live.
-const CACHE = "heartwire-shell-0.1.0";
+const CACHE = "heartwire-shell-0.2.0";
 const ASSETS = [
   "/offline.html", "/offline.js", "/styles.css", "/app.js", "/media-session.js", "/manifest.webmanifest",
   "/icons/heartwire.svg", "/icons/icon-192.png", "/icons/icon-512.png",

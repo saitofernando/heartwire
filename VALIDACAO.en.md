@@ -2,6 +2,42 @@
 
 [Português (Brasil)](VALIDACAO.md) · **English**
 
+## 0.2.0 — 2026-11-11 · Linux / Omarchy
+
+Preparation of the native Omarchy version. Environment: Omarchy 4.5.0-3, Hyprland, Quickshell 0.3.2, Qt 6.12, PipeWire/PulseAudio, Arch Rust 1.99.1 and Node.js 26.12.0. This environment does not validate the minimum compiler version or replace Windows CI.
+
+| Check | Result |
+| --- | --- |
+| `npm run release:check` | Versions, local links and PT-BR/EN pairs consistent; Windows inventory includes 419 Cargo packages with no issues. |
+| `node scripts/third-party-notices.mjs --linux --check` | Regenerated Linux inventory: 539 Cargo packages with no issues. |
+| `npm run test:pwa` | 9 tests passed. |
+| `cargo fmt --all --check` | Passed. |
+| Backend and engine Clippy without desktop UI features | Passed with `-D warnings`; command below. |
+| `bash linux/test` | 3 backend and 18 engine tests; plugin manifest and QML syntax validation. qmllint still reports dynamic shell type/import and unqualified-access warnings; QML lint was not warning-free. |
+| `bash scripts/package-omarchy.sh` | Arch package `0.2.0-1` prepared with original icons, documentation and third-party notices; external checksum in `dist/linux/SHA256SUMS`. |
+
+```bash
+CFLAGS=-fno-lto CXXFLAGS=-fno-lto CARGO_BUILD_JOBS=4 cargo clippy --locked --profile omarchy-dev --no-default-features --features omarchy-backend -p heartwire --bin heartwire-backend -p bridge-core --lib -- -D warnings
+```
+
+### Incident and phone confirmation
+
+The physical check took place before the version bump, using package `0.1.0-3` installed over `0.1.0-2`. The phone read the QR but could not open its link. The on-screen QR decoded with `zbarimg`, and the address returned HTTP 200 on the computer. Kernel logs showed `UFW BLOCK` for the phone's TCP connections to port 8081. A persistent rule restricted to the local interface and subnet was added. The installer does not modify the firewall.
+
+After the rule, the service reported WebRTC connections without errors and the user confirmed “funcionou” (“it worked”). This is a report of phone operation; model, OS, browser, duration and latency were not provided. The rule and its removal are in the [Linux guide](docs/en/linux-omarchy.md#qr-reads-but-the-link-does-not-open). No QR generator change was needed.
+
+The monochrome cat preserves the original SVG geometry and follows the bar theme through a color mask. The installed launcher's color icon bytes were compared with `design/heartwire/app.svg`. The screenshot shows only the upper part of the installed panel, without an address or QR; its displayed mode is not evidence of a complete microphone test.
+
+![Omarchy panel with the original cat icon](docs/assets/omarchy-panel.png)
+
+### Limits for this version
+
+- Physical confirmation applies to `0.1.0-3`; it was not repeated on `0.2.0-1`.
+- End-to-end phone microphone, login resume, prolonged use and latency were not measured in this session.
+- The miniapp had Node tests, without another browser run through `npm run test:ui`.
+- Windows workspace tests/Clippy were not run and no Windows 0.2.0 installer was produced. The published Windows artifact remains 0.1.0.
+- [Structured record](docs/linux-validation.json). Historical results below remain associated with the version actually measured.
+
 ## 0.1.0 — 2026-10-24
 
 Results for the HeartWire 0.1.0 executable, Windows installer and first-release checks.

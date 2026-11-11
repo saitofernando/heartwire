@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+case "${1:-}" in
+  --minimized) exit 0 ;;
+  --quit)
+    omarchy-shell -q saito.heartwire.service stop
+    exec omarchy-shell shell hide saito.heartwire
+    ;;
+  --status) exec omarchy-shell saito.heartwire.service status ;;
+  --help|-h) echo 'heartwire — native Omarchy panel. Options: --status, --quit, --minimized'; exit 0 ;;
+esac
+exec omarchy-shell shell summon saito.heartwire ''

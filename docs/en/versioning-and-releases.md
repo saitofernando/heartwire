@@ -4,14 +4,14 @@
 
 ## Version
 
-Current version: **0.1.0**. The source is `[workspace.package].version` in `Cargo.toml`. Internal crates, npm, lockfiles, the PWA cache, READMEs and the first versioned changelog entry must match. This is the first release; unreleased changes stay under **Unreleased** until they receive the next version.
+Current version: **0.2.0**. The source is `[workspace.package].version` in `Cargo.toml`. Internal crates, npm, lockfiles, the PWA cache, READMEs and the first versioned changelog entry must match. The Arch package and plugin manifest also follow this version. Future changes stay under **Unreleased**.
 
 ```powershell
 npm run version:check
-npm run version:set -- 0.1.0
+npm run version:set -- 0.2.0
 ```
 
-The second command sets the first-release version. It synchronizes files and badges without committing, tagging or publishing. Edit both changelog notes manually.
+The second command synchronizes files, badges, the Arch package (resetting `pkgrel` to 1 when the version changes) and the plugin manifest without committing, tagging or publishing. Edit both changelogs and this guide manually. Published Windows installer links are preserved: update them only after building and validating the corresponding artifact. For 0.2.0, the Windows download remains 0.1.0.
 
 We use [Semantic Versioning](https://semver.org/). During 0.x, compatible corrections increment patch; significant capabilities or incompatible changes increment minor. Changelogs follow [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), with PT-BR first and equivalent English. Never rewrite a published version.
 
@@ -36,6 +36,12 @@ pwsh -NoProfile -File scripts/package.ps1
 ```
 
 Audio changes require tone and silence tests with continuous RTP. Edge tests do not replace Safari and a physical iPhone. State what actually ran; frame size is not an end-to-end latency measurement.
+
+## Prepare Linux / Omarchy
+
+Run `npm run release:check`, `npm run test:pwa`, `cargo fmt --all --check`, `bash linux/test` and `bash scripts/package-omarchy.sh`. Check Linux notices with `node scripts/third-party-notices.mjs --linux --check`. The package is written to `dist/linux/heartwire-<version>-<pkgrel>-x86_64.pkg.tar.zst` with `SHA256SUMS`. Inspect its icons, notices and documentation. Record evidence and limitations in both VALIDACAO files and `docs/linux-validation.json`; retain the actual package version used for phone validation.
+
+Linux preparation does not validate a Windows installation. Create the annotated `v<version>` tag after checks and the commit. Push and release publication are separate steps; attach only artifacts actually built and tested, without assuming a new Windows installer.
 
 ## Artifacts
 

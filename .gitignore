@@ -6,3 +6,11 @@
 /dist/
 *.log
 *.pem
+
+# Native Omarchy build outputs; panels and backend sources stay versioned.
+/linux/build*/
+/linux/omarchy/native/*.so
+/.build/
+
+__pycache__/
+*.py[cod]

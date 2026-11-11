@@ -16,6 +16,10 @@
 | Atraso ou cortes | Teste Wi-Fi próximo ao roteador e fones com fio. Bluetooth, rede congestionada e buffers do navegador acrescentam atraso. |
 | Porta ocupada | Pare outra instância ou escolha outra porta em Ajustes com a transmissão parada. |
 
+## Linux / Omarchy: QR lido sem abrir o link
+
+Confira o [diagnóstico do firewall](linux-omarchy.md#qr-lido-mas-o-link-não-abre). O caso validado era um bloqueio TCP no UFW, não um QR inválido. O guia inclui uma regra limitada à rede local, verificação e reversão.
+
 ## Safari e Tela de Início
 
 Se **Compartilhar → Adicionar à Tela de Início** criar um ícone genérico, use **Ajustes → Instalar com ícone** no miniapp aberto no Safari. Depois do download, conclua em **Ajustes do iPhone → Perfil Baixado → Instalar** e abra o novo ícone. O WebClip carrega o PNG embutido, sem depender de um novo download da imagem.

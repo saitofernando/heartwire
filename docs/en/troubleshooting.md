@@ -16,6 +16,10 @@
 | Delay or dropouts | Test close to the router with wired headphones. Bluetooth, congestion and browser buffers add delay. |
 | Port occupied | Stop another instance or change the port in Settings with streaming stopped. |
 
+## Linux / Omarchy: QR reads but the link does not open
+
+Follow the [firewall diagnosis](linux-omarchy.md#qr-reads-but-the-link-does-not-open). The validated case was a UFW TCP block, not an invalid QR. The guide includes a local-network-only rule, verification and removal.
+
 ## Safari and Home Screen
 
 If **Share → Add to Home Screen** produces a generic icon, use **Settings → Install with icon** in the miniapp opened in Safari. After downloading, finish under **iPhone Settings → Profile Downloaded → Install** and open the new icon. The WebClip embeds the PNG without another image download.

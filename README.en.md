@@ -3,7 +3,7 @@
   <h1>HeartWire</h1>
   <p>Local audio, low latency</p>
   <p>
-    <a href="CHANGELOG.en.md"><img src="https://img.shields.io/badge/HeartWire-0.1.0-79edbb?style=flat-square&amp;labelColor=171b18" alt="HeartWire 0.1.0"></a>
+    <a href="CHANGELOG.en.md"><img src="https://img.shields.io/badge/HeartWire-0.2.0-79edbb?style=flat-square&amp;labelColor=171b18" alt="HeartWire 0.2.0"></a>
     <a href="docs/en/development.md"><img src="https://img.shields.io/badge/Windows-10%2F11%20x64-79edbb?style=flat-square&amp;labelColor=171b18" alt="Windows 10/11 x64"></a>
     <a href="Cargo.toml"><img src="https://img.shields.io/badge/Rust-2024-79edbb?style=flat-square&amp;labelColor=171b18" alt="Rust 2024"></a>
     <a href="crates/heartwire/Cargo.toml"><img src="https://img.shields.io/badge/egui-0.37-79edbb?style=flat-square&amp;labelColor=171b18" alt="egui 0.37"></a>
@@ -20,12 +20,12 @@
   </p>
 </div>
 
-**Linux / Omarchy:** [port, Arch package installation and validation limits](docs/en/linux-omarchy.md).
+**Linux / Omarchy 0.2.0:** [native panel, Arch installation and local-network access](docs/en/linux-omarchy.md). The published Windows installer remains 0.1.0.
 
 
 [Português (Brasil)](README.md) · **English**
 
-**Version: 0.1.0** · Windows 10/11 x64 · [MIT](LICENSE)
+**Version: 0.2.0** · Windows 10/11 x64 · [MIT](LICENSE)
 
 Stream Windows audio to your iPhone or use the phone as a microphone over the local network. On Windows, HeartWire is a native Rust app in the system tray; on the phone, it opens as an HTML and JavaScript web miniapp served by the computer itself. No account, no cloud and no phone app to install.
 

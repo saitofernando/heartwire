@@ -3,7 +3,9 @@ use std::path::PathBuf;
 use bridge_core::{BridgeConfig, BridgeService, ServiceStatus};
 use tokio::sync::Mutex;
 
-use crate::preferences::{Language, Preferences, write_preferences};
+#[cfg(feature = "desktop-ui")]
+use crate::preferences::Language;
+use crate::preferences::{Preferences, write_preferences};
 
 struct Controller {
     service: Option<BridgeService>,
@@ -53,6 +55,7 @@ impl Core {
     }
 
     /// Never waits: the UI keeps its previous snapshot while an operation runs.
+    #[cfg(feature = "desktop-ui")]
     pub fn try_snapshot(&self) -> Option<ServiceStatus> {
         self.controller.try_lock().ok().map(|c| c.snapshot())
     }
@@ -118,6 +121,7 @@ impl Core {
         controller.snapshot()
     }
 
+    #[cfg(feature = "desktop-ui")]
     pub async fn set_language(&self, language: Language) -> Result<(), String> {
         let mut controller = self.controller.lock().await;
         let mut preferences = controller.preferences.clone();
@@ -131,7 +135,7 @@ impl Core {
         let mut controller = self.controller.lock().await;
         let previous = crate::platform::autostart_enabled();
         crate::platform::set_autostart(enabled).map_err(|error| {
-            format!("Não foi possível alterar a inicialização com o Windows: {error}")
+            format!("Não foi possível alterar a inicialização com o sistema: {error}")
         })?;
         let mut preferences = controller.preferences.clone();
         preferences.autostart = enabled;

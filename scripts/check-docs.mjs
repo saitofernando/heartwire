@@ -3,7 +3,7 @@ import { dirname, extname, resolve, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const skip = new Set(['node_modules', 'target', 'artifacts', '.git']);
+const skip = new Set(['node_modules', 'target', 'artifacts', '.git', '.build', 'dist']);
 const files = [];
 function walk(directory) {
   for (const entry of readdirSync(directory, { withFileTypes: true })) {

@@ -11,6 +11,7 @@ pub enum Language {
     English,
 }
 
+#[cfg(feature = "desktop-ui")]
 impl Language {
     pub fn text(self, portuguese: &'static str, english: &'static str) -> &'static str {
         match self {

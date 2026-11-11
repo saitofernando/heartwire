@@ -2,6 +2,42 @@
 
 **Português (Brasil)** · [English](VALIDACAO.en.md)
 
+## 0.2.0 — 11/11/2026 · Linux / Omarchy
+
+Preparação da versão nativa para Omarchy. Ambiente: Omarchy 4.5.0-3, Hyprland, Quickshell 0.3.2, Qt 6.12, PipeWire/PulseAudio, Rust 1.99.1 do Arch e Node.js 26.12.0. Este ambiente não comprova a versão mínima do compilador nem substitui o CI Windows.
+
+| Verificação | Resultado |
+| --- | --- |
+| `npm run release:check` | Versões, links locais e pares PT-BR/EN consistentes; inventário Windows com 419 pacotes Cargo, sem pendências. |
+| `node scripts/third-party-notices.mjs --linux --check` | Inventário Linux regenerado: 539 pacotes Cargo, sem pendências. |
+| `npm run test:pwa` | 9 testes aprovados. |
+| `cargo fmt --all --check` | Aprovado. |
+| Clippy do backend e motor, sem features da interface desktop | Aprovado com `-D warnings`. Comando abaixo. |
+| `bash linux/test` | 3 testes do backend e 18 do motor; validação do manifesto e sintaxe QML. O qmllint ainda emite avisos de tipos/importações dinâmicos do shell e acessos não qualificados; não foi uma execução sem avisos QML. |
+| `bash scripts/package-omarchy.sh` | Pacote Arch `0.2.0-1` preparado com ícones originais, documentação e avisos de terceiros; hash externo em `dist/linux/SHA256SUMS`. |
+
+```bash
+CFLAGS=-fno-lto CXXFLAGS=-fno-lto CARGO_BUILD_JOBS=4 cargo clippy --locked --profile omarchy-dev --no-default-features --features omarchy-backend -p heartwire --bin heartwire-backend -p bridge-core --lib -- -D warnings
+```
+
+### Ocorrência e confirmação no celular
+
+O ensaio físico ocorreu antes da mudança de versão, no pacote `0.1.0-3`, instalado sobre `0.1.0-2`. O celular lia o QR, mas não abria o link. O QR capturado da tela foi decodificado com `zbarimg`; o endereço respondia com HTTP 200 no computador. Os logs do kernel mostravam `UFW BLOCK` para conexões TCP à porta 8081 vindas do celular. Foi adicionada uma regra persistente limitada à interface e à sub-rede local. O instalador não modifica o firewall.
+
+Depois da regra, o serviço registrou conexões WebRTC sem erro e o usuário confirmou “funcionou”. É um relato de funcionamento no celular; modelo, sistema, navegador, duração e latência não foram informados. A regra e sua reversão estão no [guia Linux](docs/pt-BR/linux-omarchy.md#qr-lido-mas-o-link-não-abre). Nenhuma alteração no gerador de QR foi necessária.
+
+O gatinho monocromático manteve a geometria do SVG original, com máscara da cor do tema na barra. Os bytes do ícone colorido instalado no lançador foram comparados com `design/heartwire/app.svg`. A captura abaixo mostra somente a parte superior do painel instalado, sem endereço ou QR; o modo visível não constitui um teste completo do microfone.
+
+![Painel Omarchy com o gatinho original](docs/assets/omarchy-panel.png)
+
+### Limites desta versão
+
+- A confirmação física se refere a `0.1.0-3`; não foi repetida no pacote `0.2.0-1`.
+- Microfone de ponta a ponta, retomada após login, uso prolongado e latência não foram medidos nesta sessão.
+- O miniapp teve testes Node, sem nova rodada de navegador via `npm run test:ui`.
+- Não foram executados os testes/clippy do workspace Windows nem produzido um instalador Windows 0.2.0. O artefato Windows publicado permanece em 0.1.0.
+- [Registro estruturado](docs/linux-validation.json). Resultados históricos abaixo permanecem associados à versão em que foram medidos.
+
 ## 0.1.0 — 24/10/2026
 
 Resultados do executável HeartWire 0.1.0, do instalador Windows e das verificações do primeiro lançamento.

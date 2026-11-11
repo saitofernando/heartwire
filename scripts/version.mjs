@@ -31,11 +31,15 @@ if (command === 'set') {
     const text = read(file)
       .replace(/(\*\*(?:Versão|Version): )[^*]+(\*\*)/, (_, prefix, suffix) => `${prefix}${next}${suffix}`)
       .replace(/(https:\/\/img\.shields\.io\/badge\/HeartWire-)[^?\"]+(-79edbb)(?=\?)/, (_, prefix, suffix) => `${prefix}${next.replaceAll('-', '--')}${suffix}`)
-      .replace(/HeartWire \d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?/g, `HeartWire ${next}`)
-      .replace(/(https:\/\/github\.com\/saitofernando\/heartwire\/releases\/download\/v)[^/]+\/HeartWire_[^/]+_x64-setup\.exe/g, (_, prefix) => `${prefix}${next}/HeartWire_${next}_x64-setup.exe`)
-      .replace(/(https:\/\/github\.com\/saitofernando\/heartwire\/releases\/tag\/v)[0-9A-Za-z.-]+/g, (_, prefix) => `${prefix}${next}`);
+      .replace(/alt="HeartWire \d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?"/g, `alt="HeartWire ${next}"`);
     writeFileSync(resolve(root, file), text);
   }
+  writeFileSync(resolve(root, 'packaging/arch/PKGBUILD'), read('packaging/arch/PKGBUILD')
+    .replace(/^pkgver=.+$/m, `pkgver=${next}`)
+    .replace(/^pkgrel=.+$/m, next === current ? '$&' : 'pkgrel=1'));
+  const plugin = json('linux/omarchy/manifest.json');
+  plugin.version = next;
+  save('linux/omarchy/manifest.json', plugin);
 } else if (command !== 'check') {
   throw new Error('Comando inválido / Invalid command: ' + command);
 }
@@ -49,6 +53,8 @@ const expected = read('Cargo.toml').match(pattern)[2];
 const lock = json('package-lock.json');
 const versions = {
   'Cargo workspace': expected,
+  'Arch package': read('packaging/arch/PKGBUILD').match(/^pkgver=(.+)$/m)?.[1],
+  'Omarchy plugin': json('linux/omarchy/manifest.json').version,
   'package.json': json('package.json').version,
   'package-lock.json': lock.version,
   'package-lock.json package': lock.packages[''].version,
@@ -58,6 +64,7 @@ for (const pkg of metadata.packages.filter(pkg => metadata.workspace_members.inc
   versions[pkg.name] = pkg.version;
   if (pkg.license !== 'MIT') throw new Error(`${pkg.name}: license deve ser MIT / must be MIT`);
 }
+let windowsVersion;
 for (const file of ['README.md', 'README.en.md']) {
   const text = read(file);
   versions[file] = text.match(/\*\*(?:Versão|Version): ([^*]+)\*\*/)?.[1];
@@ -65,11 +72,16 @@ for (const file of ['README.md', 'README.en.md']) {
   versions[`${file} badge alt`] = text.match(/alt="HeartWire (\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?)"/)?.[1];
   const downloads = [...text.matchAll(/\/releases\/download\/v([^/]+)\/HeartWire_([^/]+)_x64-setup\.exe/g)];
   if (!downloads.length) throw new Error(`${file}: link de instalação ausente / missing installer link`);
-  downloads.forEach((match, index) => {
-    versions[`${file} download ${index + 1}`] = match[1];
-    versions[`${file} installer ${index + 1}`] = match[2];
-  });
-  versions[`${file} release notes`] = text.match(/\/releases\/tag\/v([0-9A-Za-z.-]+)/)?.[1];
+  // Published Windows installers can lag behind a Linux/source release.
+  windowsVersion ??= downloads[0][1];
+  for (const match of downloads) {
+    if (match[1] !== windowsVersion || match[2] !== windowsVersion) {
+      throw new Error(`${file}: inconsistent published Windows installer`);
+    }
+  }
+  if (text.match(/\/releases\/tag\/v([0-9A-Za-z.-]+)/)?.[1] !== windowsVersion) {
+    throw new Error(`${file}: inconsistent published Windows release notes`);
+  }
 }
 if (command === 'check') {
   for (const file of ['CHANGELOG.md', 'CHANGELOG.en.md']) {
